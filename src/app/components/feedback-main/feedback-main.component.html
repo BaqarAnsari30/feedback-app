@@ -1,0 +1,35 @@
+<div class="container">
+    <!-- FORM -->
+    <div class="card">
+        <form>
+            <h2>How would you rate your service with us?</h2>
+            <div class='input-group'>
+                <input (input)="handleTextChange($event.target.value)" 
+                type="text" placeholder='Write a review' />
+                <button mat-raised-button (click)="addReview()" 
+                [disabled]="!feedback?.text" type="button">Send</button>
+            </div>
+        </form>
+    </div>
+    <!-- STATS -->
+    <div class="feedback-stats">
+        <h5>{{feedbackList.length}} Reviews</h5>
+        <h5>Average Rating: {{average | number:'0.1-1'}}</h5>
+    </div>
+    <!-- LIST -->
+    <div class="feedback-list">
+        <div *ngFor="let item of feedbackList">
+            <div class="card">
+                <div class="num-display">
+                    {{item.rating}}
+                </div>
+                <button class="close" (click)="handleDelete(item.id)">
+                    <mat-icon color="accent">close</mat-icon>
+                </button>
+                <div class="text-display">
+                    {{item.text}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
