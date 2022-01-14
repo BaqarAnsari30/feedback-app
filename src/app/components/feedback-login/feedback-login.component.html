@@ -1,0 +1,41 @@
+<div class="container">
+    <br>
+    <div class="row text-center">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+            <div class="card">
+                <h4>Login</h4>
+                <form class="small mt-4">
+                    <div>
+                        <mat-form-field appearance="outline" color="accent" class="w-100">
+                            <mat-label>Enter your email</mat-label>
+                            <input matInput type="text">
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field appearance="outline" color="accent" class="w-100">
+                            <mat-label>Enter your password</mat-label>
+                            <input matInput [type]="hide ? 'password' : 'text'">
+                            <button mat-icon-button matSuffix type="button" color="accent" 
+                            (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                                [attr.aria-pressed]="hide">
+                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                        </mat-form-field>
+                    </div>
+                    <p class="text-info" (click)="forgetPass()">Forget Password?</p>
+                    <div>
+                        <button mat-raised-button color="accent">Login</button>
+                    </div>
+                    <div class="mt-2">
+                        <span class="text-secondary">Continue as Guest </span>
+                        <button mat-icon-button type="button" (click)="continue()">
+                            <mat-icon>face</mat-icon>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-lg-2"></div>
+    </div>
+</div>
