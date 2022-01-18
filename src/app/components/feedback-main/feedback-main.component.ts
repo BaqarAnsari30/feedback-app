@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { FeedbackData } from 'src/app/data/feedback-data';
 import { Feedback } from 'src/app/models/feedback';
 import { AddReviewDialogComponent } from './dialog/add-review-dialog/add-review-dialog.component';
@@ -18,7 +19,10 @@ export class FeedbackMainComponent implements OnInit {
   average: number = 0;
   feedbackForm: FormGroup;
 
-  constructor(public dialog: MatDialog) { }
+  constructor(
+    public dialog: MatDialog,
+    public router: Router
+    ) { }
 
   ngOnInit() {
     this.loadData();
@@ -27,6 +31,11 @@ export class FeedbackMainComponent implements OnInit {
   loadData() {
     this.feedbackList = FeedbackData;
     this.calculateAvg();
+  }
+
+  //LOGIN
+  login(){
+    this.router.navigate(['/', 'auth']);
   }
 
   handleTextChange(text: string) {
